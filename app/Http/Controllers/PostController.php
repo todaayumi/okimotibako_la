@@ -28,4 +28,9 @@ class PostController extends Controller
     public function posted(){
         return view('posted');
     }
+
+    public function message($message_id){
+        $message = Post::where('id', $message_id)->value('message');
+        return view('message', compact('message'));
+    }
 }

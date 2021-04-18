@@ -19,9 +19,9 @@ Route::get('/', function () {
 
 Route::get('/box/{id}', 'PostController@index');
 Route::get('/posted', 'PostController@posted');
+Route::get('/message/{message_id}', 'PostController@message');
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/box/{id}', 'PostController@post');
 Route::get('/timeline', 'Auth\TimelineController@index');
