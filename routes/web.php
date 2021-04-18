@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/box/{id}', 'PostController@index');
 Route::get('/posted', 'PostController@posted');
 Route::get('/message/{message_id}', 'PostController@message');
+Route::get('/list/{id}', 'PostController@list');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

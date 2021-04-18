@@ -30,7 +30,15 @@ class PostController extends Controller
     }
 
     public function message($message_id){
+
         $message = Post::where('id', $message_id)->value('message');
         return view('message', compact('message'));
+    }
+
+    public function list($id){
+
+        $name = User::where('id', $id)->value('name');
+        $posts = Post::latest()->get();
+        return view('list', compact('name', 'posts'));
     }
 }
