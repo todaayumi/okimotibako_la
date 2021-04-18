@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/box/{id}', 'PostController@index');
+Route::get('/posted', 'PostController@posted');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/box/{id}', 'PostController@post');
+Route::get('/timeline', 'Auth\TimelineController@index');
