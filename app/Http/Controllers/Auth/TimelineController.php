@@ -11,7 +11,8 @@ class TimelineController extends Controller
 {
     public function index(){
 
-        $posts = Post::where('check', 0)->get();
+        $id = Auth::id();
+        $posts = Post::where('check', 0)->where('user_id', $id)->get();
         return view('auth.timeline', compact('posts'));
     }
 
