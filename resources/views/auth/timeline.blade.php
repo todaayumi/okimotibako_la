@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-<a href="/box/{{Auth::id()}}">質問箱へ</a>
+<a href="/box/{{Auth::id()}}">質問箱へ</a>  <a href="/list/{{Auth::id()}}">リストへ</a>
 @foreach($posts as $post)
 <div class="">
 <p class="text-muted mb-1">{{ $post->created_at }}</p>

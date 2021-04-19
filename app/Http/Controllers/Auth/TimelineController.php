@@ -18,10 +18,11 @@ class TimelineController extends Controller
 
     public function check(Request $request){
 
-        $posts = Post::where('check', 0)->get();
+        $auth_id = Auth::id();
+        $posts = Post::where('check', 0)->where('user_id', $auth_id)->get();
         $id = $request->id;
         Post::where('id', $id)->update(['check'=>1]);
-        return view('auth.timeline', compact('posts'));
+        return back();
     }
 
     
