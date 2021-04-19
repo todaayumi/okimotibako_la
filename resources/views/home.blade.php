@@ -16,7 +16,8 @@
 
                     <div class="container">
                     <a href="/box/{{ Auth::id() }}">質問箱へ</a><br>
-                    <a href="/timeline">timeline</a>
+                    <a href="/timeline">timeline</a><br>
+                    <a href="/list/{{ Auth::id() }}">公開リスト</a>
 
 </div>
 

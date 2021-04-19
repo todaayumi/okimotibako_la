@@ -9,13 +9,16 @@
 </div>
 	<form action="" method="post" id="box">
     @csrf
-	<textarea cols="40" rows="6" name="message" class="mx-auto d-block mb-3 border border-danger"></textarea>
+    <div class="form-group">
+    <textarea class="form-control" name="message" rows="6"></textarea>
+    </div>
     <input type="hidden" value="{{ $id }}" name="user_id">
 	<p class="mx-auto text-center"><a data-toggle="modal" data-target="#exampleModal">
   利用規約
 </a>に同意して
 <input class="btn btn-danger btn-sm" type="submit" value="送信" name="send">
 </p>
+
 </form>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

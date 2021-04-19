@@ -25,4 +25,5 @@ Route::get('/list/{id}', 'PostController@list');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/box/{id}', 'PostController@post');
-Route::get('/timeline', 'Auth\TimelineController@index');
+Route::get('/timeline', 'Auth\TimelineController@index')->middleware('auth'); ;
+Route::post('/timeline', 'Auth\TimelineController@check')->middleware('auth'); ;

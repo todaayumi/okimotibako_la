@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->integer('user_id');
             $table->text('message');
             $table->ipAddress('ip');
+            $table->boolean('check')->default(0);
             $table->timestamps();
         });
     }
