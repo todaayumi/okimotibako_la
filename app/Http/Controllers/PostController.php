@@ -16,6 +16,9 @@ class PostController extends Controller
 
     public function post(Request $request){
 
+        $rules = ['message' => ['required']];
+        $this->validate($request, $rules);
+
         $posts = new Post();
         $posts->message = $request->message;
         $posts->user_id = $request->user_id;
