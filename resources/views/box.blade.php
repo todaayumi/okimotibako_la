@@ -6,6 +6,7 @@
 <div class="container">
 		<div class="mx-auto text-center">
 	<h4 class="text-center my-3 mark d-inline-block">{{ $name }}さんのおきもち箱</h4>
+  <p>{{ $caption }}</p>
 </div>
 	<form action="" method="post" id="box">
     @csrf

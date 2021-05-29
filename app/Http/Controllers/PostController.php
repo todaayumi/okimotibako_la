@@ -11,7 +11,8 @@ class PostController extends Controller
     public function index($id){
 
         $name = User::where('id', $id)->value('name');
-        return view('box', compact('id', 'name'));
+        $caption = User::where('id', $id)->value('caption');
+        return view('box', compact('id', 'name', 'caption'));
     }
 
     public function post(Request $request){

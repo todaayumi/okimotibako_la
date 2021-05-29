@@ -26,6 +26,18 @@
                         </div>
 
                         <div class="form-group row">
+  <label for="caption" class="col-md-4 col-form-label text-md-right">caption</label>
+  <div class="col-md-6">
+    <input id="caption" type="text" name="caption" class="form-control{{ $errors->has('caption') ? ' is-invalid' : '' }}" value="{{ old('caption') }}" >
+    @if ($errors->has('caption'))
+      <span class="invalid-feedback">
+        <strong>{{ $errors->first('caption') }}</strong>
+      </span>
+    @endif
+  </div>
+</div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
