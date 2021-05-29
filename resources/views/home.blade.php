@@ -17,7 +17,8 @@
                     <div class="container">
                     <a href="/box/{{ Auth::id() }}">質問箱へ</a><br>
                     <a href="/timeline">timeline</a><br>
-                    <a href="/list/{{ Auth::id() }}">公開リスト</a>
+                    <a href="/list/{{ Auth::id() }}">公開リスト</a><br>
+                    <a href="/edit_caption">キャプションを変更する</a>
 
 </div>
 
