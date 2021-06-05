@@ -80,10 +80,11 @@
             @endif
 
             <div class="content">
+            
                 <div class="title m-b-md">
                     OKIMOTIBAKO
                 </div>
-
+                
                 
             </div>
         </div>

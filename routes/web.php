@@ -21,6 +21,8 @@ Route::get('/box/{id}', 'PostController@index');
 Route::get('/posted', 'PostController@posted');
 Route::get('/message/{message_id}', 'PostController@message');
 Route::get('/list/{id}', 'PostController@list');
+Route::get('/message/{message_id}/ogp.png', 'PostController@ogp');
+Route::get('/info', 'PostController@info');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

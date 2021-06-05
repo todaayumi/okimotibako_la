@@ -15,7 +15,7 @@
 <input type="submit" class="btn btn-primary btn-sm" value="delete">
 </div>
 </form>
-<a href="//twitter.com/share" class="twitter-share-button" data-text="{{ Str::substr($post->message, 0, 20) }}" data-url="http://http://127.0.0.1:8000/messege/{{ $post->id }}" data-lang="en">
+<a href="//twitter.com/share" class="twitter-share-button" data-text="" data-url="http://http://127.0.0.1:8000/messege/{{ $post->id }}" data-lang="en">
           Tweet</a>
 </div>
 
