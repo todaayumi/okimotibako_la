@@ -24,6 +24,7 @@ class PostController extends Controller
         $posts->message = $request->message;
         $posts->user_id = $request->user_id;
         $posts->ip = $request->ip();
+        $posts->proxy = $request->header('X-Forword-For'); 
         $posts->save();
 
         return redirect('/posted');
