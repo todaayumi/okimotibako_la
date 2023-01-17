@@ -20,11 +20,15 @@ class PostController extends Controller
         $rules = ['message' => ['required']];
         $this->validate($request, $rules);
 
+        $xForwardedFor = $request->header('X-Forwarded-For');
+        $ips = explode(',', $xForwardedFor);
+        $clientIp = $ips[0];
+
         $posts = new Post();
         $posts->message = $request->message;
         $posts->user_id = $request->user_id;
         $posts->ip = $request->ip();
-        $posts->proxy = $request->header('X-Forword-For'); 
+        $posts->proxy = $ips; 
         $posts->save();
 
         return redirect('/posted');
