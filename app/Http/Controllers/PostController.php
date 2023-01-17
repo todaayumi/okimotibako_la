@@ -44,7 +44,7 @@ class PostController extends Controller
     public function list($id){
 
         $name = User::where('id', $id)->value('name');
-        $posts = Post::where('user_id', $id)->get();
+        $posts = Post::where('user_id', $id)->orderBy('created_at', 'desc')->get();
         return view('list', compact('name', 'posts'));
     }
 

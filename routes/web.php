@@ -26,9 +26,8 @@ Route::get('/info', 'PostController@info');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home', 'HomeController@check')->middleware('auth'); 
 Route::post('/box/{id}', 'PostController@post');
-Route::get('/timeline', 'Auth\TimelineController@index')->middleware('auth'); ;
-Route::post('/timeline', 'Auth\TimelineController@check')->middleware('auth'); ;
 Route::get('/edit_caption', 'Auth\TimelineController@edit');
 Route::post('/edit_caption', 'Auth\TimelineController@edit_done');
 
