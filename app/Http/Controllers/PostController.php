@@ -28,7 +28,7 @@ class PostController extends Controller
         $posts->message = $request->message;
         $posts->user_id = $request->user_id;
         $posts->ip = $request->ip();
-        $posts->proxy = $ips; 
+        $posts->proxy = $clientIp; 
         $posts->save();
 
         return redirect('/posted');
