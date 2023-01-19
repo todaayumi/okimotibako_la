@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request as PostRequest;
+use Request;
 use \App\Post;
 use \App\User;
 
@@ -15,20 +16,31 @@ class PostController extends Controller
         return view('box', compact('id', 'name', 'caption'));
     }
 
-    public function post(Request $request){
+    public function post(PostRequest $request){
 
         $rules = ['message' => ['required']];
         $this->validate($request, $rules);
 
-        $xForwardedFor = $request->header('X-Forwarded-For');
-        $ips = explode(',', $xForwardedFor);
-        $clientIp = $ips[0];
+        // $xForwardedFor = $request->header('X-Forwarded-For');
+        // $ips = explode(',', $xForwardedFor);
+        // $clientIp = $ips[0];
+
+        foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key){
+            if (array_key_exists($key, $_SERVER) === true){
+                foreach (explode(',', $_SERVER[$key]) as $ip){
+                    $ip = trim($ip); // just to be safe
+                    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false){
+                       $ip = $ip;
+                    }
+                }
+            }
+        }
 
         $posts = new Post();
         $posts->message = $request->message;
         $posts->user_id = $request->user_id;
         $posts->ip = $request->ip();
-        $posts->proxy = $clientIp; 
+        $posts->proxy = $ip;
         $posts->save();
 
         return redirect('/posted');
