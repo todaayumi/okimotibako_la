@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TwitterLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::get('/message/{message_id}', 'PostController@message');
 Route::get('/list/{id}', 'PostController@list');
 Route::get('/message/{message_id}/ogp.png', 'PostController@ogp');
 Route::get('/info', 'PostController@info');
+Route::get('auth/login/twitter', [TwitterLoginController::class, 'redirectToProvider'])->name('twitter.login');
+Route::get('auth/twitter/callback',[TwitterLoginController::class, 'handleProviderCallback']);
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

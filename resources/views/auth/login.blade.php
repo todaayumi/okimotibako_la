@@ -62,6 +62,10 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+
+                                <p class="mt-2">
+                                 <a href="{{route('twitter.login')}}" class="btn btn-outline-primary">Twitterログイン</a>
+                                </p>
                             </div>
                         </div>
                     </form>
