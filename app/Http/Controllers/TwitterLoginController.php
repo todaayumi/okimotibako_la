@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Log;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class TwitterLoginController extends Controller
 {
@@ -23,7 +25,7 @@ class TwitterLoginController extends Controller
     public function handleProviderCallback()
     {
         try {
-            $twitterUser=Socialite::with('twitter')->user();
+            $twitterUser = Socialite::with('twitter')->stateless()->user();
         }catch (Exception $e) {
             return redirect('login/twitter');
         }
@@ -32,13 +34,11 @@ class TwitterLoginController extends Controller
  
         if($user) {
             $user->name = $twitterUser->name;
-            $user->email = $twitterUser->email;
             $user->update();
         }else {
             $user = New User();
             $user->twitter = $twitterUser->id;
             $user->name = $twitterUser->name;
-            $user->email = $twitterUser->email;
             $user->save();
         }
  
