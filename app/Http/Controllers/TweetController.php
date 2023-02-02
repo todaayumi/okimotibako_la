@@ -21,7 +21,7 @@ class TweetController extends Controller
         env('TWITTER_CLIENT_ID_ACCESS_TOKEN'),
         env('TWITTER_CLIENT_ID_ACCESS_TOKEN_SECRET'));
 
-        $status = substr($request->answer, 0, 40) . " ". "url('/message')" . $request->id;
+        $status = substr($request->answer, 0, 40) . " ". url('message'). '/' . $request->id;
         
         $ret = $twitter->post("statuses/update", [
             "status" => $status]);

@@ -21,7 +21,17 @@
                         <p class="text-muted mb-1">{{ $post->created_at }}</p>
                         <p class="mb-1">{!! nl2br(e($post->message)) !!}</p>
                         <p class="text-muted d-inline-block">ip : {{ $post->ip }} / proxy : {{$post->proxy}}
-                        <div class="d-inline-block">
+                       
+                         @if(Auth::user()->twitter)
+                         <div class="d-inline-block">
+                          <form method="get" action="/tweet" >
+                            @csrf
+                            <input type="hidden" name="id" value="{{$post->id}}">
+                            <input type="submit" class="btn btn-primary btn-sm" value="Tweet">
+                          </form>
+                          </div>
+                          @else
+                          <div class="d-inline-block">
                           <form method="post" action="/home" >
                           @csrf
                           <input type="hidden" name="id" value="{{$post->id}}">
@@ -30,13 +40,7 @@
                         </div>
                         <a href="//twitter.com/share" class="twitter-share-button" data-text="" data-url="http://xs874001.xsrv.jp/message/{{ $post->id }}" data-lang="en">
                          Tweet</a>
-                         <div class="d-inline-block">
-                          <form method="get" action="/tweet" >
-                            @csrf
-                            <input type="hidden" name="id" value="{{$post->id}}">
-                            <input type="submit" class="btn btn-primary btn-sm" value="Tweet（ログインしている方）">
-                          </form>
-                          </div>
+                         @endif
                       </div>
                       
                     </p>
