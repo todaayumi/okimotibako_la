@@ -33,4 +33,7 @@ Route::post('/home', 'HomeController@check')->middleware('auth');
 Route::post('/box/{id}', 'PostController@post');
 Route::get('/edit_caption', 'Auth\TimelineController@edit');
 Route::post('/edit_caption', 'Auth\TimelineController@edit_done');
+Route::get('/tweet', 'TweetController@index');
+Route::post('/tweet', 'TweetController@tweet');
+
 
